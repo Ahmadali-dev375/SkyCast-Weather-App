@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "test-63adf"
+  },
+  "targets": {
+    "test-63adf": {
+      "hosting": {
+        "skycast": [
+          "skycast-weather-aa"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

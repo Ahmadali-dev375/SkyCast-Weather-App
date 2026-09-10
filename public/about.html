@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About – SkyCast</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* ── DEVELOPER PROFILE CARD ─────────────────────────────── */
+    .developer-section {
+      padding: 80px 0 60px;
+    }
+
+    .dev-card {
+      background: #fff;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(30, 100, 160, 0.10);
+      display: flex;
+      flex-direction: row;
+      max-width: 860px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* Left accent panel */
+    .dev-card-panel {
+      width: 260px;
+      min-width: 260px;
+      background: linear-gradient(160deg, #1e8fbf 0%, #0f2a44 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative circles on panel */
+    .dev-card-panel::before,
+    .dev-card-panel::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.12);
+    }
+    .dev-card-panel::before {
+      width: 180px; height: 180px;
+      top: -50px; right: -60px;
+    }
+    .dev-card-panel::after {
+      width: 120px; height: 120px;
+      bottom: -30px; left: -30px;
+    }
+
+    /* Avatar */
+    .dev-avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      border: 3px solid rgba(255,255,255,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .dev-name-panel {
+      font-family: var(--font-display, 'Georgia', serif);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 6px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .dev-role-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.92);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-top: 6px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Right info panel */
+    .dev-card-body {
+      flex: 1;
+      padding: 44px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0;
+    }
+
+    .dev-section-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #1e8fbf;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .dev-info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 32px;
+    }
+
+    .dev-info-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .dev-info-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #8aaabb;
+      font-weight: 600;
+    }
+
+    .dev-info-value {
+      font-size: 0.95rem;
+      color: #0f2a44;
+      font-weight: 600;
+    }
+
+    .dev-divider {
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(90deg, #1e8fbf, #5dc8f0);
+      border-radius: 2px;
+      margin: 22px 0;
+    }
+
+    .dev-project-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #eef6fb;
+      border: 1px solid #c8e6f5;
+      color: #1e8fbf;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 10px;
+      width: fit-content;
+    }
+
+    .dev-project-tag i {
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .dev-card {
+        flex-direction: column;
+      }
+      .dev-card-panel {
+        width: 100%;
+        min-width: unset;
+        padding: 36px 20px 30px;
+        flex-direction: row;
+        gap: 20px;
+        justify-content: flex-start;
+      }
+      .dev-avatar {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+        margin-bottom: 0;
+      }
+      .dev-card-body {
+        padding: 28px 24px;
+      }
+      .dev-info-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================
+       NAVBAR STARTS
+       ======================================== -->
+  <nav class="skycast-nav navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="nav-brand navbar-brand" href="index.html">SkyCast</a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <!-- <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li> -->
+           <!-- <li class="nav-item"><a class="nav-link" href="cal.html">Calculator</a></li>
+          <li class="nav-item"><a class="nav-link " href="resultcard.html">Result Card</a></li> -->
+        </ul>
+        <div class="d-flex align-items-center gap-3"></div>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+  <!-- THEME TOGGLE BUTTON -->
+  <button id="themeToggle" class="theme-toggle-btn" title="Toggle Theme">
+    <i class="fas fa-moon" id="themeIcon"></i>
+  </button>
+</div>
+    </div>
+  </nav>
+  <!-- NAVBAR ENDS -->
+
+
+  <!-- ========================================
+       ABOUT HERO SECTION
+       ======================================== -->
+  <section class="page-hero">
+    <div class="container">
+      <h1 class="page-hero-title fade-up">
+        Clarifying the <span class="accent">Atmosphere</span>
+      </h1>
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       MISSION & VISION SECTION
+       ======================================== -->
+  <section class="mv-section">
+    <div class="container">
+      <div class="row g-4">
+
+        <!-- Mission Card -->
+        <div class="col-lg-6">
+          <div class="mission-card reveal">
+            <div class="card-icon-circle">
+              <i class="fas fa-crosshairs"></i>
+            </div>
+            <h3 style="font-family:var(--font-display);font-size:1.8rem;margin-bottom:16px">Our Mission</h3>
+            <p style="color:var(--sky-muted);line-height:1.8;font-size:0.92rem">
+              To empower individuals by hyper-local weather intelligence.
+              We bridge the gap between satellite complexity,
+              ensuring clarity is always within reach.
+            </p>
+
+            <!-- Trust row -->
+            <div class="trust-row">
+              <div class="trust-avatars">
+                <div class="trust-avatar">EV</div>
+                <div class="trust-avatar">SC</div>
+                <div class="trust-avatar">MT</div>
+              </div>
+              <span class="trust-text">Trusted by Professionals</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vision Card -->
+        <div class="col-lg-6">
+          <div class="vision-card reveal">
+            <div class="vision-icon-circle">
+              <i class="fas fa-eye"></i>
+            </div>
+            <h3 style="font-family:var(--font-display);font-size:1.8rem;margin-bottom:16px;color:#fff">Our Vision</h3>
+            <p style="color:rgba(255,255,255,0.75);line-height:1.8;font-size:0.92rem">
+              A world where unforeseen weather events no longer disrupt lives.
+            </p>
+            <div class="vision-card-img" style="background:linear-gradient(135deg,rgba(30,143,191,0.4),rgba(15,42,68,0.6));display:flex;align-items:center;justify-content:center;font-size:4rem;border-radius:var(--radius)">🌍</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       DEVELOPER PROFILE SECTION
+       ======================================== -->
+  <section class="developer-section">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title">Behind the Project</h2>
+      </div>
+
+      <div class="dev-card reveal">
+
+        <!-- Left Panel -->
+        <div class="dev-card-panel">
+          <div class="dev-avatar">🧑</div>
+          <div>
+            <div class="dev-role-badge">Full Stack Developer</div>
+          </div>
+        </div>
+
+        <!-- Right Body -->
+        <div class="dev-card-body">
+          <div class="dev-section-label">Student Details</div>
+
+          <div class="dev-info-grid">
+            <div class="dev-info-item">
+              <span class="dev-info-label">Full Name</span>
+              <span class="dev-info-value">Ahmad Ali</span>
+            </div>
+            <div class="dev-info-item">
+              <span class="dev-info-label">University</span>
+              <span class="dev-info-value">GCUF</span>
+            </div>
+            <div class="dev-info-item">
+              <span class="dev-info-label">Semester</span>
+              <span class="dev-info-value">BS-IT 4th &mdash; Morning A</span>
+            </div>
+            <div class="dev-info-item">
+              <span class="dev-info-label">Subject</span>
+              <span class="dev-info-value">Web Development</span>
+            </div>
+          </div>
+
+          <div class="dev-divider"></div>
+
+          <div class="dev-project-tag">
+            <i class="fas fa-cloud-sun"></i>
+            Assignment&mdash;Weather App
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Sign Up Modal -->
+  <div class="modal fade sky-modal" id="signupModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" style="font-family:var(--font-display)">Join SkyCast</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="sky-label">Full Name</label>
+            <input type="text" class="sky-input" placeholder="John Doe" />
+          </div>
+          <div class="mb-3">
+            <label class="sky-label">Email Address</label>
+            <input type="email" class="sky-input" placeholder="john@example.com" />
+          </div>
+          <div class="mb-3">
+            <label class="sky-label">Password</label>
+            <input type="password" class="sky-input" placeholder="••••••••" />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-outline-sky" data-bs-dismiss="modal">Cancel</button>
+          <button class="btn-primary-sky">Create Account</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ========================================
+       FOOTER
+       ======================================== -->
+  <footer>
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+        <div class="footer-brand">SkyCast</div>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Settings</a>
+          <a href="#">API Support</a>
+        </div>
+        <span class="footer-copy">&copy; 2026 SKYCAST WEATHER. PRECISION IN EVERY LAYER.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Config: load API key before script.js (config.js is gitignored) -->
+  <script src="js/config.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

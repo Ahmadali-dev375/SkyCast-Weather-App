@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkyCast – Weather Intelligence</title>
+
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- External Stylesheet (project-wide styles) -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ========================================
+       NAVBAR STARTS
+       ======================================== -->
+  <nav class="skycast-nav navbar navbar-expand-lg sticky-top">
+    <div class="container">
+
+      <!-- Brand Logo -->
+      <a class="nav-brand navbar-brand" href="index.html">SkyCast</a>
+
+      <!-- Mobile Toggle Button -->
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Nav Links -->
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <!-- <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li> -->
+           <!-- <li class="nav-item"><a class="nav-link" href="cal.html">Calculator</a></li>
+          <li class="nav-item"><a class="nav-link " href="resultcard.html">Result Card</a></li> -->
+        </ul>
+
+        <!-- Search + Sign Up -->
+        <div class="d-flex align-items-center gap-3">
+  <!-- THEME TOGGLE BUTTON -->
+  <button id="themeToggle" class="theme-toggle-btn" title="Toggle Theme">
+    <i class="fas fa-moon" id="themeIcon"></i>
+  </button>
+</div>
+
+    </div>
+  </nav>
+  <!-- NAVBAR ENDS -->
+
+
+  <!-- ========================================
+       HERO SECTION STARTS
+       ======================================== -->
+  <section class="hero-section">
+    <div class="text-center">
+
+      <!-- Eyebrow Badge -->
+      <div class="hero-badge fade-up">
+        <i class="fas fa-cloud"></i>
+        REAL-TIME PRECISION MONITORING
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="hero-title fade-up fade-up-d1">
+        Weather Intelligence for the<br>
+        <span class="accent">Atmospheric Era</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="hero-subtitle fade-up fade-up-d2">
+        Transform complex meteorological data into clear, actionable insights.<br>
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="d-flex gap-3 justify-content-center flex-wrap fade-up fade-up-d3">
+        <a href="services.html" class="btn-primary-sky">
+          Explore Dashboard <i class="fas fa-arrow-right"></i>
+        </a>
+       
+      </div>
+
+      
+
+    </div>
+  </section>
+  <!-- HERO SECTION ENDS -->
+
+
+  <!-- ========================================
+       WEATHER STATS STRIP
+       ======================================== -->
+  <div class="container">
+    <div class="weather-strip">
+  <div class="strip-item">
+    <div class="strip-label">Current Temp</div>
+    <div class="strip-value" id="tempVal">--°C</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-label">Humidity</div>
+    <div class="strip-value" id="humidVal">--%</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-label">Wind Speed</div>
+    <div class="strip-value" id="windVal">--km/h</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-label">Visibility</div>
+    <div class="strip-value" id="visVal">--km</div>
+  </div>
+</div>
+<p id="weatherDesc" style="text-align:center;margin-top:12px;color:var(--sky-muted);font-size:0.88rem;font-weight:500"></p>
+  </div>
+
+
+  <!-- ========================================
+       SEARCH SECTION
+       ======================================== -->
+  <section class="search-section">
+    <div class="container">
+      <div class="search-bar-wrapper">
+<div class="search-bar-big">
+        <span class="search-pin"><i class="fas fa-location-dot" style="color:var(--sky-teal)"></i></span>
+        <input id="cityInput" type="text" placeholder="Enter your city or region..." autocomplete="off" />
+<ul id="suggestionBox" class="suggestion-box"></ul>
+        <button class="btn-analyze" id="analyzeBtn">Analyze Forecast</button>
+      </div>
+      <div class="popular-cities mt-3">
+        <span>Popular:</span>
+        <span class="city-chip">London, UK</span>
+        <span class="city-chip">Tokyo, JP</span>
+        <span class="city-chip">New York, US</span>
+        <span class="city-chip">Paris, FR</span>
+      </div>
+      
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       ATMOSPHERIC LAYERS SECTION (Cards)
+       ======================================== -->
+  <section class="atmos-section">
+    <div class="container">
+
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Atmospheric Layers</h2>
+          <p class="section-subtitle">Global conditions and severe weather tracking.</p>
+        </div>
+        <div class="nav-arrows">
+          <button class="nav-arrow"><i class="fas fa-chevron-left"></i></button>
+          <button class="nav-arrow"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+
+      <div class="row g-4">
+
+        <!-- Card 1 -->
+        <div class="col-md-4">
+          <div class="atmos-card reveal">
+            <div class="atmos-card-img-wrap">
+              <div class="gallery-placeholder" style="background:linear-gradient(135deg,#1a1a2e,#2d4059);color:#fff;height:210px">⛈️</div>
+              <span class="card-badge badge-alert">Alert: Thunderstorm</span>
+            </div>
+            <div class="atmos-card-body">
+              <h5 class="atmos-card-title">Unsettled Patterns</h5>
+              <p class="atmos-card-text">High-frequency tracking of tropical depressions and storm cells with sub-meter accuracy.</p>
+              <a href="services.html" class="card-link">View Storm Radar <i class="fas fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col-md-4">
+          <div class="atmos-card reveal">
+            <div class="atmos-card-img-wrap">
+              <div class="gallery-placeholder" style="background:linear-gradient(135deg,#c47d1a,#e8a44a);height:210px">🌅</div>
+              <span class="card-badge badge-good">Optimal Clarity</span>
+            </div>
+            <div class="atmos-card-body">
+              <h5 class="atmos-card-title">Stable Highs</h5>
+              <p class="atmos-card-text">Experience consistent high-pressure zones providing perfect conditions for outdoor operations.</p>
+              <a href="services.html" class="card-link">7-Day Visibility <i class="fas fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-md-4">
+          <div class="atmos-card reveal">
+            <div class="atmos-card-img-wrap">
+              <div class="gallery-placeholder" style="background:linear-gradient(135deg,#2d4a3e,#4a7c6f);height:210px">🌫️</div>
+              <span class="card-badge badge-low">Low Visibility</span>
+            </div>
+            <div class="atmos-card-body">
+              <h5 class="atmos-card-title">Maritime Humidity</h5>
+              <p class="atmos-card-text">Detailed mist and fog projection maps using satellite moisture-sensing technology.</p>
+              <a href="services.html" class="card-link">Marine Reports <i class="fas fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       BOOTSTRAP CAROUSEL SECTION
+       ======================================== -->
+  <section style="padding:0 0 70px">
+    <div class="container">
+      <div class="text-center mb-4">
+        <span class="section-eyebrow">Live Snapshot</span>
+        <h2 class="section-title">Global Weather Highlights</h2>
+      </div>
+
+      <div id="weatherCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#weatherCarousel" data-bs-slide-to="0" class="active"></button>
+          <button type="button" data-bs-target="#weatherCarousel" data-bs-slide-to="1"></button>
+          <button type="button" data-bs-target="#weatherCarousel" data-bs-slide-to="2"></button>
+        </div>
+        <div class="carousel-inner rounded-4 overflow-hidden" style="box-shadow:var(--sky-shadow)">
+          <div class="carousel-item active">
+            <div style="background:linear-gradient(135deg,#0f2a44,#1a5f7a);height:300px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:5rem">🌧️</div>
+            <div class="carousel-caption d-none d-md-block">
+              <h5 style="font-family:var(--font-display)">Heavy Rain — Southeast Asia</h5>
+              <p style="font-size:0.85rem">Monsoon season at peak intensity across coastal regions.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div style="background:linear-gradient(135deg,#1a6b3a,#2d9b56);height:300px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:5rem">☀️</div>
+            <div class="carousel-caption d-none d-md-block">
+              <h5 style="font-family:var(--font-display)">Clear Skies — Mediterranean</h5>
+              <p style="font-size:0.85rem">Optimal visibility with high-pressure systems dominating.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div style="background:linear-gradient(135deg,#6a3a1a,#c47d1a);height:300px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:5rem">🌪️</div>
+            <div class="carousel-caption d-none d-md-block">
+              <h5 style="font-family:var(--font-display)">Storm Watch — Gulf Coast</h5>
+              <p style="font-size:0.85rem">Category 2 alert issued for coastal communities.</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#weatherCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#weatherCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+ 
+
+
+  <!-- ========================================
+       FOOTER STARTS
+       ======================================== -->
+  <footer>
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+        <div class="footer-brand">SkyCast</div>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Settings</a>
+          <a href="#">API Support</a>
+        </div>
+        <div class="d-flex align-items-center gap-3">
+          <div class="footer-icons">
+            <a href="#" class="footer-icon"><i class="fas fa-rss"></i></a>
+            <a href="#" class="footer-icon"><i class="fas fa-globe"></i></a>
+          </div>
+          <span class="footer-copy">&copy; 2024 SKYCAST WEATHER. PRECISION IN EVERY LAYER.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- FOOTER ENDS -->
+
+
+  <!-- Bootstrap 5 JS Bundle CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Config: load API key before script.js (config.js is gitignored) -->
+  <script src="js/config.js"></script>
+  <!-- External JavaScript File -->
+  <script src="js/script.js"></script>
+
+</body>
+</html>
